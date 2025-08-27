@@ -1,0 +1,197 @@
+/* Using CSS variables for a consistent color theme */
+:root {
+    --primary-bg-color: #ffffff;
+    --secondary-bg-color: #f4f7f6;
+    --primary-text-color: #333333;
+    --accent-color: #007bff;
+    --accent-hover-color: #0056b3;
+    --border-color: #dddddd;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the dark mode theme */
+body.dark-mode {
+    --primary-bg-color: #1a1a2e;
+    --secondary-bg-color: #16213e;
+    --primary-text-color: #e0e0e0;
+    --accent-color: #0f3460;
+    --accent-hover-color: #e94560;
+    --border-color: #2a3a5e;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header and Navigation Styling */
+.site-header {
+    background-color: var(--secondary-bg-color);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--accent-hover-color);
+}
+
+.site-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-nav li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.site-nav a {
+    text-decoration: none;
+    color: var(--primary-text-color);
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.site-nav a:hover {
+    color: var(--primary-bg-color);
+    background-color: var(--accent-hover-color);
+}
+
+/* Main Content and Sections */
+.site-main section {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 20px;
+    border: 3px solid var(--border-color);
+    background-color: var(--accent-color);
+}
+
+/* Project Cards Styling */
+.project-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* --- NEW: Styling for the link that wraps the card --- */
+.project-card-link {
+    text-decoration: none; /* Removes underline from the link */
+    color: inherit; /* Makes text inside the link inherit color from its parent */
+    flex: 1; /* Allows cards to grow and fill space */
+    min-width: 250px; /* Minimum width before wrapping */
+    display: flex; /* Helps the card inside fill the link area */
+}
+
+.project-card {
+    background-color: var(--secondary-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%; /* Ensures the card fills the link wrapper */
+}
+
+.project-card-link:hover .project-card {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--shadow-color);
+    border-color: var(--accent-hover-color);
+}
+
+/* --- NEW: Styling for images inside project cards --- */
+.project-card img {
+    width: 100%; /* Makes the image responsive */
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px; /* Adds space between image and text */
+}
+
+/* Button Styling */
+#theme-toggle-btn {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#theme-toggle-btn:hover {
+    background-color: var(--accent-hover-color);
+}
+
+/* Footer Styling */
+.site-footer {
+    background-color: var(--primary-text-color);
+    color: var(--secondary-bg-color);
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* --- NEW: Styling for social media links in the footer --- */
+.social-links {
+    margin-bottom: 15px;
+}
+
+.social-links a {
+    color: var(--secondary-bg-color);
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--accent-hover-color);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .site-header .container {
+        flex-direction: column;
+    }
+
+    .site-nav {
+        margin-top: 15px;
+    }
+    
+    .profile-pic {
+        float: none;
+        display: block;
+        margin: 0 auto 20px;
+    }
+}
